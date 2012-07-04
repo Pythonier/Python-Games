@@ -5,8 +5,7 @@
 # wait...Goals to Come
 #1. Special ending if player has locket
 #2. make it so invalid inputs reload the current menu - easy, but let's finish the story first
-#3. finish framework and make it zork style playing
-#4. whatever else needs to be done
+#3. whatever else needs to be done
 
 # handling the title screen stuff
 title = """
@@ -59,7 +58,8 @@ def front_of_house():
 	elif door_choice == "3":
 		leave_house()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		front_of_house()
 		
 # yeah, we need credits! -- name isn't working if errors made, so screw it, restart
 def credits():
@@ -122,7 +122,8 @@ def weird_door():
 		print "\nThe painting still weirds you out. You decide to stay in this room."
 		weird_door()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		weird_door()
 	
 # remember that locked left room? ENTER we go!
 def locked_room():
@@ -142,7 +143,8 @@ def locked_room():
 		print "You try to open the door; it's locked from this side."
 		stairs_up()
 	else:
-		selection_error()
+		print "\nInvalid Choice"
+		locked_room()
 		
 # into the house we went! front door of the house
 def entrance():
@@ -158,7 +160,8 @@ def entrance():
 	elif house_enter == "3":
 		front_of_house()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		entrance()
 	
 # approach that door
 def house_door():
@@ -178,7 +181,8 @@ def house_door():
 	elif house_enter == "3":
 		front_of_house()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		house_door()
 	
 # chose to go around back
 def backyard():
@@ -197,7 +201,8 @@ def backyard():
 	elif backyard_choice == "3":
 		leave_house()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		backyard()
 		
 # they be climbin' up yo' windows!
 def window_entrance():
@@ -212,7 +217,8 @@ def window_entrance():
 	elif bedroom == "2":
 		bed_to_hallway()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		window_entrance()
 		
 # sleep on the broken window room bed
 def bed_sleep():
@@ -235,6 +241,9 @@ def bed_sleep():
 	elif bed_woken == "3":
 		print "\nYou climb back out the broken window."
 		backyard()
+	else:
+		print "\nInvalid Choice."
+		bed_sleep()
 			
 # right door of the upstairs
 def up_room_right():
@@ -249,7 +258,8 @@ def up_room_right():
 	elif up_room_right_choice == "2":
 		stairs_up()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		up_room_right()
 		
 # chose to sleep on the living room couch
 def lay_down():
@@ -270,7 +280,8 @@ def lay_down():
 	elif base_choice == "2":
 		relax()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		lay_down()
 
 # left door of the upstairs
 def up_room_left():
@@ -308,7 +319,8 @@ def room_right():
 	elif room_right_choice == "4":
 		entrance()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		room_right()
 
 # up the stairs we go!
 def stairs_up():
@@ -326,7 +338,8 @@ def stairs_up():
 	elif upstairs_room_choice == "3":
 		entrance()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		stairs_up()
 		
 # yell at the sound!
 def yelled():
@@ -355,6 +368,9 @@ def bed_to_hallway():
 		print "YOU!"
 		print "You run towards to door at the end of the hallway."
 		weird_door()
+	else:
+		print "\nInvalid Choice."
+		bed_to_hallway()
 
 # open bedroom dresser
 def dresser():
@@ -375,7 +391,8 @@ def dresser():
 	elif dresser_choice == "2":
 		stairs_up()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		dresser()
 		
 # they chose to not stumble around the basement
 def relax():
@@ -402,7 +419,8 @@ def leave_basement():
 		print "\nYou continue searching for a staircase, but you do not find one."
 		leave_basement()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		leave_basement()
 		
 # found that room in the basement..hmmmmmmm?
 def room_in_basement():
@@ -433,7 +451,8 @@ def room_in_basement():
 		print "front door. You are confused."
 		entrance()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		room_in_basement()
 		
 # image created a door - gogogo!
 def image_door():
@@ -453,7 +472,8 @@ def image_door():
 		print "You walk out into the living room, somehow."
 		room_right()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		image_door()
 		
 # that alter trap door thing...yeah
 def trap_door():
@@ -480,12 +500,14 @@ def trap_door():
 			print "\nThan you shall die!"
 			game_lost()
 		else:
-			selection_error()
+			print "\nInvalid Choice."
+			trap_door()
 	elif old_man == "2":
 		print "You have no idea where you are. There appears to be no exit."
 		trap_door()
 	else:
-		selection_error()
+		print "\nInvalid Choice."
+		trap_door()
 
 # old man's game, leggo!
 # should we handle it all in this one class? why the hell not?
