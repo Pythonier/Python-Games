@@ -81,10 +81,9 @@ def leave_house():
 	print "\nYou leave the property..."
 	print "You'll never know the secrets of house 4213, {0}.".format(name)
 	
-# game revolves around careful typing - they made a mistake, game over! (uses player name)
-# this will eventually be obsolete as invalid options reload the current choices player has
+# this has become obsolete with menus reloading upon typing error - keep it anyways!
 def selection_error():
-	raise SystemExit("\nINPUT ERROR - Looks like you made a mistake, {0}. Type carefully next time!".format(name))
+	raise SystemExit("\nINPUT ERROR - Game error has occured! Report it to Excellence_ with documentation.")
 	
 # don't go into the storage room!
 def storage_room():
@@ -588,7 +587,6 @@ def final_room():
 	print "to trap and kill those who sleep - unless they can"
 	print "uncover the secrets."
 	game_won()
-
 
 # let's attempt to play, eh? 
 # this, eh, starts the story.
