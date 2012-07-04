@@ -7,18 +7,11 @@
 #2. make it so invalid inputs reload the current menu - easy, but let's finish the story first
 #3. zork style
 
-<<<<<<< HEAD
-=======
 # soon to be finished and redone in a more "zork" type style - type what you wana do!
 
 # THIS IS A PYTHON GAME, save as "whatever.py" - you need to know how to run it
 # the game is called "4213" - currently incomplete, working on it, etc, etc..
 
-<<<<<<< HEAD
->>>>>>> eafcda6f64f7ec486fc41b800ebf8ef93490ef7e
->>>>>>> de8de96227e2ff7d0013775d061ff296024479f8
-=======
->>>>>>> a904c79d0ecc17acceeca0984be496e07b1b3b82
 # handling the title screen stuff
 title = """
 0   0   00000   0   00000
