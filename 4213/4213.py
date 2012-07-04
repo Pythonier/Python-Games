@@ -91,7 +91,7 @@ def storage_room():
 	print "As you take a few steps further in, you hear the door slam shut."
 	print "You can suddenly smell the faint oder of some gas."
 	print "As you begin to fade, you can hear someone laughing."
-	game_lost() # should we make a death box like the title? maybe...na (easy add, but i don't want)
+	game_lost() # should we make a death box like the title? maybe...na (easy add, but i don't want to right now)
 	
 # hallway weird door; used in the hall instance no matter what the option chosen is.
 def weird_door():
@@ -563,20 +563,23 @@ def special_door():
 		
 # player chose to exit the game.
 def title_leave():
-	print "Goodbye, player."
+	print "\nGoodbye, player."
 	
 # er, player lost, let's eventually reload the start menu
 def game_lost():
 	print "\nYou have died, {0}...better luck next time!".format(name)
+	raise SystemExit("Game Closed")
 
 # er, player won
 def game_won():
 	print "\nYou've uncovered the secrets of 4213, {0}! Congratulations!".format(name)
+	raise SystemExit("Player won, game closed.")
 	
 # they had the locket, special win! NOTE: currently unused
 def special_win():
-		print "Congratulations, {0}! You know the true secrets of 4213, but is something".format(name)
+		print "\nCongratulations, {0}! You know the true secrets of 4213, but is something".format(name)
 		print "left hidden? Play again to find out!"
+		raise SystemExit("Player won, game closed.")
 		
 # let's create that final eff'ing room
 def final_room():
