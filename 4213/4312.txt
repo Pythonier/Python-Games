@@ -589,7 +589,6 @@ def final_room():
 	print "uncover the secrets."
 	game_won()
 
-
 # let's attempt to play, eh? 
 # this, eh, starts the story.
 if start_game == "1":
