@@ -596,8 +596,8 @@ def final_room():
 if start_game == "1":
 	name = raw_input("What is your name, player: ")
 	print "\nWelcome to 4213, {0}.".format(name)
-	print "Prepare to approach the house. Good luck...you'll need it."
-	print "Warning: Every decision is final, so choose carefully!"
+	print "Prepare to approach the house, {0}.".format(name)
+	print "Goodluck...you'll need it."
 	front_of_house()
 elif start_game == "2": # player chose to quit
 	title_leave()
