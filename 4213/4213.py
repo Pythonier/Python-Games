@@ -5,7 +5,8 @@
 # wait...Goals to Come
 #1. Special ending if player has locket
 #2. make it so invalid inputs reload the current menu - easy, but let's finish the story first
-#3. whatever else needs to be done
+#3. finish framework and make it zork style playing
+#4. whatever else needs to be done
 
 # handling the title screen stuff
 title = """
