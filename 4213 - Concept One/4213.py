@@ -34,19 +34,22 @@ def front_of_house():
     print "1. Go inside the house."
     print "2. Go around back."
     print "3. Leave the property and never come back."
-    door_choice = raw_input("> ")
+    door_choice = raw_input("> ").lower()
     if door_choice == "1":
         house_door() # quick, single documentation: these are the functions we call for the choice made. varies depending on section.
     elif door_choice == "2":
         backyard()
     elif door_choice == "3":
         leave_house()
+    elif door_choice == "help":
+        game_help()
+        front_of_house()
     else:
         print "\nInvalid Choice."
         front_of_house()
         
 # yeah, we need credits! -- name isn't working if errors made, so screw it, restart
-def credits():
+def game_credits():
     print "\n- 4213 - Python text game by Excellence_ of Broken Legion"
     print "- Broken Legion: http://brokenlegion.org/smf"
     print "- Idea(s) by: Excellence_, iBoredom_"
@@ -85,7 +88,7 @@ def weird_door():
     print "1. Climb up the ladder."
     print "2. Examine the chest."
     print "3. Leave the room."
-    weird_room = raw_input("> ")
+    weird_room = raw_input("> ").lower()
     if weird_room == "1":
         print "\nYou decide to climb up the ladder and"
         print "see where it leads."
@@ -102,6 +105,9 @@ def weird_door():
     elif weird_room == "3":
         print "\nThe painting still weirds you out. You decide to stay in this room."
         weird_door()
+    elif weird_room == "help":
+        game_help()
+        weird_door()
     else:
         print "\nInvalid Choice."
         weird_door()
@@ -114,7 +120,7 @@ def locked_room():
     print "What do you do?"
     print "1. Pick up and read the book."
     print "2. Leave the room."
-    book = raw_input("> ")
+    book = raw_input("> ").lower()
     if book == "1":
         print "\nYou pick up the book - it appears to be a diary."
         print "You sit down and begin reading it."
@@ -123,6 +129,9 @@ def locked_room():
         print "\nYou exit the room and the door slams shut."
         print "You try to open the door; it's locked from this side."
         stairs_up()
+    elif book == "help":
+        game_help()
+        locked_room()
     else:
         print "\nInvalid Choice"
         locked_room()
@@ -133,13 +142,16 @@ def entrance():
     print "1. Go up the stairs."
     print "2. Go into the room on the right."
     print "3. Go outside."
-    house_enter = raw_input("> ")
+    house_enter = raw_input("> ").lower()
     if house_enter == "1":
         stairs_up()
     elif house_enter == "2":
         room_right()
     elif house_enter == "3":
         front_of_house()
+    elif house_enter == "help":
+        game_help()
+        entrance()
     else:
         print "\nInvalid Choice."
         entrance()
@@ -154,13 +166,16 @@ def house_door():
     print "1. Go up the stairs."
     print "2. Go into the room on the right."
     print "3. Go back outside."
-    house_enter = raw_input("> ")
+    house_enter = raw_input("> ").lower()
     if house_enter == "1":
         stairs_up()
     elif house_enter == "2":
         room_right()
     elif house_enter == "3":
         front_of_house()
+    elif house_enter == "help":
+        game_help()
+        house_door()
     else:
         print "\nInvalid Choice."
         house_door()
@@ -173,7 +188,7 @@ def backyard():
     print "1. Enter the house."
     print "2. Return to the front of the house."
     print "3. Leave and never come back."
-    backyard_choice = raw_input("> ")
+    backyard_choice = raw_input("> ").lower()
     if backyard_choice == "1":
         window_entrance()
     if backyard_choice == "2":
@@ -181,6 +196,9 @@ def backyard():
         front_of_house()
     elif backyard_choice == "3":
         leave_house()
+    elif backyard_choice == "help":
+        game_help()
+        backyard()
     else:
         print "\nInvalid Choice."
         backyard()
@@ -192,11 +210,14 @@ def window_entrance():
     print "What would you like to do?"
     print "1. Lay down on the bed."
     print "2. Go to the door and open it."
-    bedroom = raw_input("> ")
+    bedroom = raw_input("> ").lower()
     if bedroom == "1":
         bed_sleep()
     elif bedroom == "2":
         bed_to_hallway()
+    elif bedroom == "help":
+        game_help()
+        window_entrance()
     else:
         print "\nInvalid Choice."
         window_entrance()
@@ -211,7 +232,7 @@ def bed_sleep():
     print "1. Go to the door."
     print "2. Yell at the sound."
     print "3. Leave the house."
-    bed_woken = raw_input("> ")
+    bed_woken = raw_input("> ").lower()
     if bed_woken == "1":
         print "\nYou walk to the door, but find it locked."
         bed_sleep()
@@ -222,6 +243,9 @@ def bed_sleep():
     elif bed_woken == "3":
         print "\nYou climb back out the broken window."
         backyard()
+    elif bed_woken == "help":
+        game_help()
+        bed_sleep()
     else:
         print "\nInvalid Choice."
         bed_sleep()
@@ -233,11 +257,14 @@ def up_room_right():
     print "What would you like to do?"
     print "1. Go to the dresser and open it."
     print "2. Leave the room."
-    up_room_right_choice = raw_input("> ")
+    up_room_right_choice = raw_input("> ").lower()
     if up_room_right_choice == "1":
         dresser()
     elif up_room_right_choice == "2":
         stairs_up()
+    elif up_room_right_choice == "help":
+        game_help()
+        up_room_right()
     else:
         print "\nInvalid Choice."
         up_room_right()
@@ -251,7 +278,7 @@ def lay_down():
     print "It is dark, what would you like to do?"
     print "1. Stumble around and try to find an exit."
     print "2. Stay put and think of something else."
-    base_choice = raw_input("> ")
+    base_choice = raw_input("> ").lower()
     if base_choice == "1":
         print "\nYou attempt to move around, but due to the darkness,"
         print "you walk into a low bar. As you begin to regain consciousness, you hear"
@@ -260,6 +287,9 @@ def lay_down():
         game_lost()
     elif base_choice == "2":
         relax()
+    elif base_choice == "help":
+        game_help()
+        lay_down()
     else:
         print "\nInvalid Choice."
         lay_down()
@@ -281,7 +311,7 @@ def room_right():
     print "2. Examine the closed door."
     print "3. Enter the storage room."
     print "4. Return to the entrance."
-    room_right_choice = raw_input("> ")
+    room_right_choice = raw_input("> ").lower()
     if room_right_choice == "1":
         lay_down()
     elif room_right_choice == "2": 
@@ -291,6 +321,9 @@ def room_right():
         storage_room()
     elif room_right_choice == "4":
         entrance()
+    elif room_right_choice == "help":
+        game_help()
+        room_right()
     else:
         print "\nInvalid Choice."
         room_right()
@@ -303,13 +336,16 @@ def stairs_up():
     print "1. Go into the left room."
     print "2. Go into the room on the right."
     print "3. Go back downstairs."
-    upstairs_room_choice = raw_input("> ")
+    upstairs_room_choice = raw_input("> ").lower()
     if upstairs_room_choice == "1":
         up_room_left()
     elif upstairs_room_choice == "2":
         up_room_right()
     elif upstairs_room_choice == "3":
         entrance()
+    elif upstairs_room_choice == "help":
+        game_help()
+        stairs_up()
     else:
         print "\nInvalid Choice."
         stairs_up()
@@ -331,7 +367,7 @@ def bed_to_hallway():
     print "To the right is a painting."
     print "1. Head to the doorway."
     print "2. Examine the painting."
-    hallway = raw_input("> ")
+    hallway = raw_input("> ").lower()
     if hallway == "1":
         print "\nYou head down the hallway towards the door."
         print "You swear you hear a sound beyond it."
@@ -341,6 +377,9 @@ def bed_to_hallway():
         print "YOU!"
         print "You run towards to door at the end of the hallway."
         weird_door()
+    elif hallway == "help":
+        game_help()
+        bed_to_hallway()
     else:
         print "\nInvalid Choice."
         bed_to_hallway()
@@ -351,7 +390,7 @@ def dresser():
     print "What would you like to do?"
     print "1. Read the note."
     print "2. Ignore the note and leave the room."
-    dresser_choice = raw_input("> ")
+    dresser_choice = raw_input("> ").lower()
     if dresser_choice == "1":
         print "\nThe note says:"
         print "\n\t'Forever alone in this house, I am."
@@ -363,6 +402,9 @@ def dresser():
         stairs_up()
     elif dresser_choice == "2":
         stairs_up()
+    elif dresser_choice == "help":
+        game_help()
+        dresser()
     else:
         print "\nInvalid Choice."
         dresser()
@@ -382,7 +424,7 @@ def leave_basement():
     print "What would you like to do?"
     print "1. Open the door."
     print "2. Continue searching for a staircase."
-    base_door = raw_input("> ")
+    base_door = raw_input("> ").lower()
     if base_door == "1":
         print "\nYou push on the door, but it doesn't move."
         print "You try again and again, finally managing to open it."
@@ -390,6 +432,9 @@ def leave_basement():
         room_in_basement()
     elif base_door == "2":
         print "\nYou continue searching for a staircase, but you do not find one."
+        leave_basement()
+    elif base_door == "help":
+        game_help()
         leave_basement()
     else:
         print "\nInvalid Choice."
@@ -404,7 +449,7 @@ def room_in_basement():
     print "1. Attempt to speak to the image."
     print "2. Punch at the image."
     print "3. Attempt to leave the room."
-    yourself = raw_input("> ")
+    yourself = raw_input("> ").lower()
     if yourself == "1":
         print "\nYou begin speaking to the image, but it doesn't appear"
         print "to understand.  You try again; but this time, the image"
@@ -423,6 +468,9 @@ def room_in_basement():
         print "into the house entrance, apparently through the"
         print "front door. You are confused."
         entrance()
+    elif yourself == "help":
+        game_help()
+        room_in_basement()
     else:
         print "\nInvalid Choice."
         room_in_basement()
@@ -433,7 +481,7 @@ def image_door():
     print "What would you like to do?"
     print "1. Examine the alter."
     print "2. Open the door."
-    alter_room = raw_input("> ")
+    alter_room = raw_input("> ").lower()
     if alter_room == "1":
         print "You step forward to examine the alter."
         print "You see a small keyhole, and you insert the key"
@@ -444,6 +492,9 @@ def image_door():
         print "You go to the door and open it."
         print "You walk out into the living room, somehow."
         room_right()
+    elif alter_room == "help":
+        game_help()
+        image_door()
     else:
         print "\nInvalid Choice."
         image_door()
@@ -460,7 +511,7 @@ def trap_door():
     print "his face covered. What do you do?"
     print "1. Speak to the man."
     print "2. Run back towards the trap door."
-    old_man = raw_input("> ")
+    old_man = raw_input("> ").lower()
     if old_man == "1":
         print "\nHello, {0}. I've been waiting for you.".format(name)
         print "Would you like the secrets of 4213?"
@@ -478,6 +529,9 @@ def trap_door():
     elif old_man == "2":
         print "You have no idea where you are. There appears to be no exit."
         trap_door()
+    elif old_man == "3":
+        game_help()
+        trap_door()
     else:
         print "\nInvalid Choice."
         trap_door()
@@ -488,7 +542,7 @@ def game():
     print "\nYou shall answer my questions if you wish to"
     print "to know the secrets of this place. Let's play."
     print "What is the address of this place?"
-    question_one = raw_input("> ")
+    question_one = raw_input("> ").lower()
     if question_one == "4213":
         print "\nCorrect, but tis' was easy question."
         print "What has four legs in the morning, two legs"
@@ -564,14 +618,22 @@ def final_room():
     print "uncover the secrets."
     game_won()
     
-# callable start menu class? yes please.
+# little help menu thingy mo-jigger
+def game_help():
+    print "\nHow To Play:"
+    print "Choose an option supplied to you by typing"
+    print "which number you'd like."
+    print "Read the dialogue given to you and continue playing!"
+    print "Have fun!"
+    
+# callable start menu class? yes please. also starts the game
 def start_menu():
     print "\nWelcome to 4213, {0}.".format(name)
     print "Choose your option."
     print "1. Play 4213"
     print "2. Exit"
     print "3. View Credits"
-    start_game = raw_input("> ")
+    start_game = raw_input("> ").lower()
     if start_game == "1":
         print "\nGood luck...you'll need it!"
         print "Prepare to approach the house, {0}.".format(name)
@@ -579,7 +641,10 @@ def start_menu():
     elif start_game == "2": # player chose to quit
         title_leave()
     elif start_game == "3":
-        credits()
+        game_credits()
+    elif start_game == "help":
+        game_help()
+        start_menu()
     else:
         print "\nInvalid Choice."
         start_menu()
