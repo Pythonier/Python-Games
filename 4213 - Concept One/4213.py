@@ -38,15 +38,12 @@ def commands():
 def front_of_house():
     print "\nYou're standing in front of house 4213." # let's remember to break each section to make reading easier.
     print "What would you like to do?"
-    print "1. Go inside the house."
-    print "2. Go around back."
-    print "3. Leave the property and never come back."
     door_choice = raw_input("> ").lower()
-    if door_choice == "1":
+    if door_choice == "enter house":
         house_door() # quick, single documentation: these are the functions we call for the choice made. varies depending on section.
-    elif door_choice == "2":
+    elif door_choice == "backyard":
         backyard()
-    elif door_choice == "3":
+    elif door_choice == "leave":
         leave_house()
     elif door_choice == "help":
         game_help()
@@ -54,8 +51,6 @@ def front_of_house():
     elif door_choice == "commands":
         commands()
         front_of_house()
-    elif door_choice == "exit":
-        game_quit()
     else:
         print "\nInvalid Choice."
         front_of_house()
@@ -666,8 +661,8 @@ def start_menu():
     print "View Credits"
     start_game = raw_input("> ").lower()
     if start_game == "play":
-        print "\nGood luck {0}...you'll need it!"
-        print "Prepare to approach the house.".format(name)
+        print "\nGood luck {0}...you'll need it!".format(name)
+        print "Prepare to approach the house."
         front_of_house()
     elif start_game == "exit": # player chose to quit
         title_leave()
