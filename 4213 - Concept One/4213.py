@@ -31,7 +31,7 @@ name = raw_input("\nWhat is your name: ").capitalize()
 def commands():
     print "\nThe following make up possible commands:"
     print "Examine (object), Open (object), Enter (object)"
-    print "Return, Exit, Commands"
+    print "Leave (exits the room), Quit (leave game), Commands"
     print "Some rooms have additional commands for you to figure out!"
     
 # front of house...obviously.
@@ -51,6 +51,8 @@ def front_of_house():
     elif door_choice == "commands":
         commands()
         front_of_house()
+    elif door_choice == "quit":
+        game_quit()
     else:
         print "\nInvalid Choice."
         front_of_house()
@@ -120,7 +122,7 @@ def weird_door():
             print "\nYou leave the medallion in the chest."
             weird_door()
         else:
-            print "HELP: Try as keep or leave."
+            print "\nHELP: Try as keep or leave."
             weird_door()
     elif weird_room == "return":
         print "\nThe painting still weirds you out. You decide to stay in this room."
@@ -131,6 +133,8 @@ def weird_door():
     elif weird_door == "commands":
         commands()
         weird_door()
+    elif weird_door == "quit":
+        game_quit()
     else:
         print "\nInvalid Choice."
         weird_door()
@@ -141,23 +145,29 @@ def locked_room():
     print "left room of the upstairs."
     print "You see a single book on the floor."
     print "What do you do?"
-    print "1. Pick up and read the book."
-    print "2. Leave the room."
     book = raw_input("> ").lower()
-    if book == "1":
+    if book == "examine book":
+        print "\nThe book looks old and interesting. Dust has settled on it, meaning"
+        print "it hasn't been moved in awhile."
+    elif book == "read book":
         print "\nYou pick up the book - it appears to be a diary."
         print "You sit down and begin reading it."
         read_book()
-    elif book == "2":
+    elif book == "leave room":
         print "\nYou exit the room and the door slams shut."
         print "You try to open the door; it's locked from this side."
         stairs_up()
+    elif book == "climb ladder":
+        print "\nYou see no reason to return to the previous room."
+        locked_room()
     elif book == "help":
         game_help()
         locked_room()
     elif book == "commands":
         commands()
         locked_room()
+    elif book == "quit":
+        game_quit()
     else:
         print "\nInvalid Choice"
         locked_room()
@@ -165,19 +175,27 @@ def locked_room():
 # into the house we went! front door of the house
 def entrance():
     print "\nYou see a staircase and a room to the right. What do you do?"
-    print "1. Go up the stairs."
-    print "2. Go into the room on the right."
-    print "3. Go outside."
     house_enter = raw_input("> ").lower()
-    if house_enter == "1":
+    if house_enter == "climb stairs":
         stairs_up()
-    elif house_enter == "2":
+    elif house_enter == "examine stairs":
+        print "\nThe stairs lead up stairs."
+        entrance()
+    elif house_enter == "enter right room":
         room_right()
-    elif house_enter == "3":
+    elif house_enter == "examine right room":
+        print "\nIt appears to be a gathering room of some sort."
+        print "You can see a few things from where you stand."
+        entrance()
+    elif house_enter == "return":
         front_of_house()
     elif house_enter == "help":
         game_help()
         entrance()
+    elif house_enter == "commands":
+        commands()
+    elif house_enter == "quit":
+        game_quit()
     else:
         print "\nInvalid Choice."
         entrance()
@@ -189,42 +207,55 @@ def house_door():
     print "...and it slowly opens."
     print "You enter the house."
     print "You see a staircase and a room to the right. What do you do?"
-    print "1. Go up the stairs."
-    print "2. Go into the room on the right."
-    print "3. Go back outside."
     house_enter = raw_input("> ").lower()
-    if house_enter == "1":
+    if house_enter == "climb stairs":
         stairs_up()
-    elif house_enter == "2":
+    elif house_enter == "examine stairs":
+        print "\nThe stairs lead up stairs."
+        entrance()
+    elif house_enter == "enter right room":
         room_right()
-    elif house_enter == "3":
+    elif house_enter == "examine right room":
+        print "\nIt appears to be a gathering room of some sort."
+        print "You can see a few things from where you stand."
+        entrance()
+    elif house_enter == "return":
         front_of_house()
     elif house_enter == "help":
         game_help()
-        house_door()
+        entrance()
+    elif house_enter == "commands":
+        commands()
+    elif house_enter == "quit":
+        game_quit()
     else:
         print "\nInvalid Choice."
-        house_door()
+        entrance()
     
 # chose to go around back
 def backyard():
     print "\nYou head around back."
-    print "You see a broken window you could climb through."
+    print "You see a broken window."
     print "What do you do?"
-    print "1. Enter the house."
-    print "2. Return to the front of the house."
-    print "3. Leave and never come back."
     backyard_choice = raw_input("> ").lower()
-    if backyard_choice == "1":
+    if backyard_choice == "enter house":
         window_entrance()
-    if backyard_choice == "2":
-        print "You return to the front of the house."
+    elif backyard_choice == "examine window":
+        print "\nThe window appears to be broken; you could fit"
+        print "through it and enter the house."
+        backyard()
+    elif backyard_choice == "return":
+        print "\nYou return to the front of the house."
         front_of_house()
-    elif backyard_choice == "3":
+    elif backyard_choice == "leave":
         leave_house()
     elif backyard_choice == "help":
         game_help()
         backyard()
+    elif backyard_choice == "commands":
+        commands()
+    elif backyard_choice == "quit":
+        game_quit()
     else:
         print "\nInvalid Choice."
         backyard()
@@ -232,15 +263,18 @@ def backyard():
 # they be climbin' up yo' windows!
 def window_entrance():
     print "\nYou enter the house from the broken window."
-    print "You appear to be in a bedroom - you see a bed and a door."
+    print "You appear to be in a bedroom."
     print "What would you like to do?"
-    print "1. Lay down on the bed."
-    print "2. Go to the door and open it."
     bedroom = raw_input("> ").lower()
-    if bedroom == "1":
+    if bedroom == "lay in bed":
         bed_sleep()
-    elif bedroom == "2":
+    elif bedroom == "open door":
         bed_to_hallway()
+    elif bedroom == "examine room":
+        print "\nYou see a bed and a door, plus the window behind you."
+        window_entrance()
+    elif bedroom == "return":
+        backyard()
     elif bedroom == "help":
         game_help()
         window_entrance()
@@ -534,11 +568,9 @@ def trap_door():
     print "You follow the tunnel towards the light."
     print "\nYou reach the end, and the light begins glowing very brightly."
     print "You can finally see again, now standing before a man in a cloak,"
-    print "his face covered. What do you do?"
-    print "1. Speak to the man."
-    print "2. Run back towards the trap door."
-    old_man = raw_input("> ").lower()
-    if old_man == "1":
+    print "his face covered. What would you like to do?"
+    hidden_man = raw_input("> ").lower()
+    if hidden_man == "speak":
         print "\nHello, {0}. I've been waiting for you.".format(name)
         print "Would you like the secrets of 4213?"
         print "Yes or No"
@@ -552,11 +584,23 @@ def trap_door():
         else:
             print "\nInvalid Choice."
             trap_door()
-    elif old_man == "2":
-        print "You have no idea where you are. There appears to be no exit."
+    elif hidden_man == "look around":
+        print "\nYou have no idea where you are. There appears to be no exit."
         trap_door()
-    elif old_man == "3":
+    elif hidden_man == "return":
+        print "\nYou have no idea where you are. There appears to be no exit."
+        trap_door()
+    elif hidden_man == "examine man":
+        print "\nHe is wearing a cloak, nothing much to see."
+        trap_door()
+    elif hidden_man == "attack man":
+        print "\nYou dare to attack ME? You shall die here!"
+        game_lost()
+    elif hidden_man == "help":
         game_help()
+        trap_door()
+    elif hidden_man == "commands":
+        commands()
         trap_door()
     else:
         print "\nInvalid Choice."
@@ -593,26 +637,10 @@ def game():
         
 # read the diary
 def read_book():
-    print "\nAfter some time, you finish reading the book - which turned out to be a diary."
-    print "You read about a door in the basement which requires a special key."
-    print "You should attempt to find the key...if you want the secrets of 4213."
+    print "\nAfter some time, you finish reading the diary."
+    print "You read about a door in the basement which is hidden."
     print "You leave the room, the door slaming shut behind you and locking."
     stairs_up()
-    
-# this function is useless right now...i won't fully comment out though
-def special_door(): 
-        print "\nYou insert the locket and the door opens."
-        print "You enter the room...in front of you is..."
-        print "YOURSELF!"
-        print "You look down and examine the locket."
-        print "Inside, you see a picture of your family."
-        print "Suddenly, you are hit with a chill."
-        print "....."
-        print "....."
-        print "You wake up in your bed, the secrets of 4213 revealed."
-        print "4213 never existed, but was a dream...a living nightmare."
-        print "You hope to never again enter house 4213...but will you?"
-        special_win()
         
 # player chose to exit the game.
 def title_leave():
@@ -627,12 +655,6 @@ def game_lost():
 def game_won():
     print "\nYou've uncovered the secrets of 4213, {0}! Congratulations!".format(name)
     raise SystemExit("Player won, game closed.")
-    
-# they had the locket, special win! NOTE: currently unused
-def special_win():
-        print "\nCongratulations, {0}! You know the true secrets of 4213, but is something".format(name)
-        print "left hidden? Play again to find out!"
-        raise SystemExit("Player won, game closed.")
         
 # let's create that final eff'ing room
 def final_room():
@@ -648,7 +670,7 @@ def final_room():
 def game_help():
     print "\n4213 - Help"
     print "Type 'commands' to view commands allowed to be used."
-    print "Each romm contains multiple choices to be made."
+    print "Each room contains multiple choices to be made."
     print "Read the dialogue given to you and continue playing!"
     print "Have fun!"
     
