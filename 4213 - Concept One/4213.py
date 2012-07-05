@@ -24,9 +24,16 @@ print "The Python text game by Excellence_ of Broken Legion."
 # end of the title screen and opening stuff
 
 # defining the name here to make everything work easier
-name = raw_input("\nWhat is your name: ")
+name = raw_input("\nWhat is your name: ").capitalize()
 
 # here, let's define classes NOW and add them here as needed!    
+# commands listing
+def commands():
+    print "\nThe following make up possible commands:"
+    print "Examine (object), Open (object), Enter (object)"
+    print "Return, Exit, Commands"
+    print "Some rooms have additional commands for you to figure out!"
+    
 # front of house...obviously.
 def front_of_house():
     print "\nYou're standing in front of house 4213." # let's remember to break each section to make reading easier.
@@ -44,6 +51,11 @@ def front_of_house():
     elif door_choice == "help":
         game_help()
         front_of_house()
+    elif door_choice == "commands":
+        commands()
+        front_of_house()
+    elif door_choice == "exit":
+        game_quit()
     else:
         print "\nInvalid Choice."
         front_of_house()
@@ -59,11 +71,11 @@ def game_credits():
     print "- Game Copyright Excellence_, 2012"
     start_menu()
         
-# uh, like, you need to make a proper choice at the title too! (no name of player here)
+# uh, like, you need to make a proper choice at the title too! (no name of player here); this is obsolete i think
 def title_error():
     print "\nMistake has been made, game error! Closing!"
     
-# aw, they left the house. farewell, {username!}!
+# aw, they left the house. farewell, {username}!
 def leave_house():
     print "\nYou leave the property..."
     print "You'll never know the secrets of house 4213, {0}.".format(name)
@@ -71,6 +83,10 @@ def leave_house():
 # this has become obsolete with menus reloading upon typing error - keep it anyways!
 def game_error():
     raise SystemExit("\nGAME ERROR - Game error has occurred! Report it to Excellence_ with documentation.")
+
+# player quit mid game
+def game_quit():
+    raise SystemExit("\nGood bye, {0}.".format(name))
     
 # don't go into the storage room!
 def storage_room():
@@ -85,28 +101,40 @@ def weird_door():
     print "\nYou open the door at the hallway."
     print "Upon entering, you see a ladder and an old chest."
     print "What would you like to do?"
-    print "1. Climb up the ladder."
-    print "2. Examine the chest."
-    print "3. Leave the room."
     weird_room = raw_input("> ").lower()
-    if weird_room == "1":
-        print "\nYou decide to climb up the ladder and"
-        print "see where it leads."
+    if weird_room == "examine ladder":
+        print "\nThe ladder appears to lead to an upstairs room."
+        print "It can be climbed."
+        weird_door()
+    elif weird_room == "climb ladder":
+        print "\nYou climb up the ladder."
         locked_room()
-    elif weird_room == "2":
-        print "\nYou see that the chest is not locked and"
-        print "you decide to open it."
-        print "Inside, you find a locket, which appears to be empty."
-        print "You decide to keep the locket, feeling some sort"
-        print "of attraction towards it."
-        print "You close the chest and turn to the ladder."
-        print "You now decide to climb the ladder."
-        locked_room()
-    elif weird_room == "3":
+    elif weird_room == "examine chest":
+        print "\nThis chest appears to be unlocked, it could be opened."
+        weird_door()
+    elif weird_room == "open chest":
+        print "\nYou decide to open the chest."
+        print "Inside, you find a medallion of some sort."
+        print "Keep the medallion or leave it?"
+        medallion = raw_input("> ").lower()
+        if medallion == "keep":
+            print "\nYou keep the medallion, feeling an attraction towards it."
+            print "Now you decide to climb the ladder."
+            locked_room()
+        elif medallion == "leave":
+            print "\nYou leave the medallion in the chest."
+            weird_door()
+        else:
+            print "HELP: Try as keep or leave."
+            weird_door()
+    elif weird_room == "return":
         print "\nThe painting still weirds you out. You decide to stay in this room."
         weird_door()
     elif weird_room == "help":
         game_help()
+        weird_door()
+    elif weird_door == "commands":
+        commands()
         weird_door()
     else:
         print "\nInvalid Choice."
@@ -131,6 +159,9 @@ def locked_room():
         stairs_up()
     elif book == "help":
         game_help()
+        locked_room()
+    elif book == "commands":
+        commands()
         locked_room()
     else:
         print "\nInvalid Choice"
@@ -620,9 +651,9 @@ def final_room():
     
 # little help menu thingy mo-jigger
 def game_help():
-    print "\nHow To Play:"
-    print "Choose an option supplied to you by typing"
-    print "which number you'd like."
+    print "\n4213 - Help"
+    print "Type 'commands' to view commands allowed to be used."
+    print "Each romm contains multiple choices to be made."
     print "Read the dialogue given to you and continue playing!"
     print "Have fun!"
     
@@ -630,17 +661,17 @@ def game_help():
 def start_menu():
     print "\nWelcome to 4213, {0}.".format(name)
     print "Choose your option."
-    print "1. Play 4213"
-    print "2. Exit"
-    print "3. View Credits"
+    print "Play 4213"
+    print "Exit"
+    print "View Credits"
     start_game = raw_input("> ").lower()
-    if start_game == "1":
-        print "\nGood luck...you'll need it!"
-        print "Prepare to approach the house, {0}.".format(name)
+    if start_game == "play":
+        print "\nGood luck {0}...you'll need it!"
+        print "Prepare to approach the house.".format(name)
         front_of_house()
-    elif start_game == "2": # player chose to quit
+    elif start_game == "exit": # player chose to quit
         title_leave()
-    elif start_game == "3":
+    elif start_game == "credits":
         game_credits()
     elif start_game == "help":
         game_help()
