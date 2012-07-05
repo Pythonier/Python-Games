@@ -23,14 +23,13 @@ print "--------------------------"
 print "The Python text game by Excellence_ of Broken Legion."
 # end of the title screen and opening stuff
 
+# defining the name here to make everything work easier
 name = raw_input("\nWhat is your name: ")
     
-# globalize the locket - useless right now
+# let's see if we can make this work, eh?
 global locket
-locket = "false"
 
-# here, let's define classes NOW and add them here as needed!
-    
+# here, let's define classes NOW and add them here as needed!    
 # front of house...obviously.
 def front_of_house():
     print "\nYou're standing in front of house 4213." # let's remember to break each section to make reading easier.
@@ -96,13 +95,15 @@ def weird_door():
         print "see where it leads."
         locked_room()
     elif weird_room == "2":
+        locket = "0"
         print "\nYou see that the chest is not locked and"
         print "you decide to open it."
-        print "Inside, you find a locket, which appears to be locked."
+        print "Inside, you find a locket, which appears to be empty."
         print "You decide to keep the locket, feeling some sort"
         print "of attraction towards it."
         print "You close the chest and turn to the ladder."
         print "You now decide to climb the ladder."
+        locket = "1"
         locked_room()
     elif weird_room == "3":
         print "\nThe painting still weirds you out. You decide to stay in this room."
@@ -276,10 +277,6 @@ def up_room_left():
     print "You can't do anything with this door."
     stairs_up()
 
-# let's try this for giving the locket..useless function right now, let's just make in dead.
-#def locket():
-    #locket == "1"
-
 # go into the room right of the entrance
 def room_right():
     global locket
@@ -294,9 +291,9 @@ def room_right():
     room_right_choice = raw_input("> ")
     if room_right_choice == "1":
         lay_down()
-    elif room_right_choice == "2": # this is not needed right now (and locket == "0":)
-        if locket == "true":
-            special_win()
+    elif room_right_choice == "2": 
+        if locket == "1": # have it, special story line, yes!
+            special_door()
         else:
             print "\nThis door is bolted shut, nothing you can do."
             room_right()
