@@ -268,8 +268,12 @@ def window_entrance():
     bedroom = raw_input("> ").lower()
     if bedroom == "lay in bed":
         bed_sleep()
+    elif bedroom == "lay down":
+        bed_sleep()
     elif bedroom == "open door":
         bed_to_hallway()
+    elif bedroom == "examine door":
+        print "\nThe door appears to be unlocked and could be opened."
     elif bedroom == "examine room":
         print "\nYou see a bed and a door, plus the window behind you."
         window_entrance()
@@ -278,34 +282,44 @@ def window_entrance():
     elif bedroom == "help":
         game_help()
         window_entrance()
+    elif bedroom == "quit":
+        game_quit()
     else:
         print "\nInvalid Choice."
         window_entrance()
         
 # sleep on the broken window room bed
 def bed_sleep():
-    print "\nYou lay down on the bed. It is surpisingly comfortable."
+    print "\nYou lay down on the bed. It is surprisingly comfortable."
     print "You drift into a deep sleep."
     print "..."
     print "You wake to the sound of a 'thunk' outside the door."
     print "What do you do?"
-    print "1. Go to the door."
-    print "2. Yell at the sound."
-    print "3. Leave the house."
     bed_woken = raw_input("> ").lower()
-    if bed_woken == "1":
+    if bed_woken == "open door":
         print "\nYou walk to the door, but find it locked."
         bed_sleep()
-    elif bed_woken == "2":
+    elif bed_woken == "examine door":
+        print "\nThe door appears locked at the moment."
+        print "However, you can hear something beyond it."
+    elif bed_woken == "yell":
         print "\nIS SOMEONE THERE!?"
         print "..."
         yelled()
-    elif bed_woken == "3":
+    elif bed_woken == "leave room":
         print "\nYou climb back out the broken window."
+        backyard()
+    elif bed_woken == "return":
+        print "\nYou climb out the broken window."
         backyard()
     elif bed_woken == "help":
         game_help()
         bed_sleep()
+    elif bed_woken == "commands":
+        commands()
+        bed_sleep()
+    elif bed_woken == "quit":
+        game_quit()
     else:
         print "\nInvalid Choice."
         bed_sleep()
@@ -313,18 +327,38 @@ def bed_sleep():
 # right door of the upstairs
 def up_room_right():
     print "\nYou enter the room on the right."
-    print "Inside the room you see a desser and nothing more."
     print "What would you like to do?"
-    print "1. Go to the dresser and open it."
-    print "2. Leave the room."
     up_room_right_choice = raw_input("> ").lower()
-    if up_room_right_choice == "1":
-        dresser()
-    elif up_room_right_choice == "2":
+    if up_room_right_choice == "open dresser":
+        print "\nYou open the dresser and see a note."
+        dresser_choice = raw_input("> ").lower()
+        if dresser_choice == "take note":
+            print "\nThe note says:"
+            print "\n\t'Forever alone in this house, I am."
+            print "\tBut the house is me and myself."
+            print "\tNo one shall enter my house and live."
+            print "\tMy house shall be mine and my own.'"
+            print "\nThe note is rather weird; you return it to the dresser."
+            print "You leave the room."
+            stairs_up()
+        elif dresser_choice == "leave note":
+            up_room_right()
+        else:
+            print "\nHint: try take note or leave note!"
+            up_room_right()
+    elif up_room_right_choice == "leave":
         stairs_up()
+    elif up_room_right == "examine room":
+        print "\nInside the room you see a desser and nothing more."
+        up_room_right()
     elif up_room_right_choice == "help":
         game_help()
         up_room_right()
+    elif up_room_right == "commands":
+        commands()
+        up_room_right()
+    elif up_room_right == "quit":
+        game_quit()
     else:
         print "\nInvalid Choice."
         up_room_right()
