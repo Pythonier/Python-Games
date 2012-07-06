@@ -584,24 +584,35 @@ def room_in_basement():
         
 # image created a door - gogogo!
 def image_door():
-    print "The room beyond the image reveals an alter and a door."
-    print "What would you like to do?"
-    print "1. Examine the alter."
-    print "2. Open the door."
+    print "You enter the room beyond."
     alter_room = raw_input("> ").lower()
-    if alter_room == "1":
-        print "You step forward to examine the alter."
-        print "You see a small keyhole, and you insert the key"
-        print "left by the image."
-        print "You hear a small click and a trap door opens beneath you."
+    if alter_room == "examine alter":
+        print "\nYou step forward to examine the alter."
+        print "You can make out a small keyhole."
+        image_door()
+    elif alter_room == "use key on alter":
+        print "\nYou insert the key into the alter and hear a small 'click'."
+        print "It appears a trap door has opened behind the alter; you enter it."
         trap_door()
-    elif alter_room == "2":
+    elif alter_room == "examine room":
+        print "\nYou see a door and an alter."
+        image_door()
+    elif alter_room == "examine door":
+        print "\nThe door appears to be cracked open; you could"
+        print "easily open it."
+        image_door()
+    elif alter_room == "open door":
         print "You go to the door and open it."
         print "You walk out into the living room, somehow."
+        print "The door closes and locks behind you."
         room_right()
     elif alter_room == "help":
         game_help()
         image_door()
+    elif alter_room == "commands":
+        commands()
+    elif alter_room == "quit":
+        game_quit()
     else:
         print "\nInvalid Choice."
         image_door()
@@ -637,8 +648,14 @@ def trap_door():
     elif hidden_man == "return":
         print "\nYou have no idea where you are. There appears to be no exit."
         trap_door()
+    elif hidden_man == "examine room":
+        print "\nThe room appears to be made of light, and you see nothing"
+        print "but the man."
+        trap_door()
     elif hidden_man == "examine man":
         print "\nHe is wearing a cloak, nothing much to see."
+        print "He does appear to be old, maybe you could try speaking"
+        print "to him or try to overtake him."
         trap_door()
     elif hidden_man == "attack man":
         print "\nYou dare to attack ME? You shall die here!"
@@ -670,7 +687,7 @@ def game():
             print "Final question: A Person walked Parallel to a Legion of Elephants."
             final_question = raw_input(" >").lower()
             if final_question == "apple":
-                print "\nThe answers await."
+                print "\nThe answers await you, {0}.".format(name)
                 final_room()
             else:
                 print "\nGoodbye, {0}.".format(name)
@@ -686,7 +703,7 @@ def game():
 def read_book():
     print "\nAfter some time, you finish reading the diary."
     print "You read about a door in the basement which is hidden."
-    print "You leave the room, the door slaming shut behind you and locking."
+    print "You leave the room, the door slamming shut behind you and locking."
     stairs_up()
         
 # player chose to exit the game.
