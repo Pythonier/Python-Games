@@ -1,5 +1,5 @@
 # this is version two (2) of the Python text game '4213'
-# everything handled through defined sections (functions, in a sense)
+# everything handled through defined sections (functions/classes, in a sense)
 # questions? PM Excellence_ on the Broken Legion Forums (http://brokenlegion.org/smf)
 
 # handling the title screen stuff
@@ -31,7 +31,7 @@ name = raw_input("\nWhat is your name: ").capitalize()
 def commands():
     print "\nThe following make up possible commands:"
     print "Examine (object), Open (object), Enter (object)"
-    print "Leave (exits the room), Quit (leave game), Commands"
+    print "Return (exits the room), Quit (leave game), Commands"
     print "Some rooms have additional commands for you to figure out!"
     
 # front of house...obviously.
@@ -154,7 +154,7 @@ def locked_room():
         read_book()
     elif book == "leave room":
         print "\nYou exit the room and the door slams shut."
-        print "You try to open the door; it's locked from this side."
+        print "You try to open the door; it now appears locked."
         stairs_up()
     elif book == "climb ladder":
         print "\nYou see no reason to return to the previous room."
@@ -173,10 +173,14 @@ def locked_room():
         
 # into the house we went! front door of the house
 def entrance():
-    print "\nYou see a staircase and a room to the right. What do you do?"
+    print "\nYou are at the entrance of the house."
+    print "What do you do?"
     house_enter = raw_input("> ").lower()
     if house_enter == "climb stairs":
         stairs_up()
+    elif house_enter == "examine room":
+        print "\nYou see a staircase and a room to the right."
+        entrance()
     elif house_enter == "examine stairs":
         print "\nThe stairs lead up stairs."
         entrance()
@@ -202,10 +206,9 @@ def entrance():
 # approach that door
 def house_door():
     print "\nYou approach the front door."
-    print "You knock on the door..."
+    print "You knock..."
     print "...and it slowly opens."
     print "You enter the house."
-    print "You see a staircase and a room to the right. What do you do?"
     house_enter = raw_input("> ").lower()
     if house_enter == "climb stairs":
         stairs_up()
@@ -218,6 +221,9 @@ def house_door():
         print "\nIt appears to be a gathering room of some sort."
         print "You can see a few things from where you stand."
         entrance()
+    elif house_enter == "examine room":
+        print "\nYou see a staircase and a room to the right."
+        house_door()
     elif house_enter == "return":
         front_of_house()
     elif house_enter == "help":
@@ -428,7 +434,7 @@ def room_right():
     elif room_right_choice == "examine room":
         print "\nIt appears to be the living room of the house."
         print "You see an old couch, a closed door, and an old walk-in storage room."
-        room_right
+        room_right()
     elif room_right_choice == "help":
         game_help()
         room_right()
