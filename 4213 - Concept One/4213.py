@@ -34,6 +34,30 @@ def commands():
     print "Return (exits the room), Quit (leave game), Commands"
     print "Some rooms have additional commands for you to figure out!"
     
+    # yeah, we need credits! -- name isn't working if errors made, so screw it, restart
+def game_credits():
+    print "\n- 4213 - Python text game by Excellence_ of Broken Legion"
+    print "- Broken Legion: http://brokenlegion.org/smf"
+    print "- Idea(s) by: Excellence_, iBoredom_"
+    print "- Game written by: Excellence_"
+    print "- Code Checking: Excellence_ and iBoredom_"
+    print "- Testing done by: Excellence_ and iBoredom_"
+    print "- Game Copyright Excellence_, 2012"
+    start_menu()
+    
+# aw, they left the house. farewell, {username}!
+def leave_house():
+    print "\nYou leave the property..."
+    print "You'll never know the secrets of house 4213, {0}.".format(name)
+    
+# keep this as an error screen when the time comes
+def game_error():
+    raise SystemExit("\nGAME ERROR - Game error has occurred! Report it to Excellence_ with documentation.")
+
+# player quit mid game
+def game_quit():
+    raise SystemExit("\nGood bye, {0}.".format(name))
+    
 # front of house...obviously.
 def front_of_house():
     print "\nYou're standing in front of house 4213." # let's remember to break each section to make reading easier.
@@ -59,30 +83,6 @@ def front_of_house():
     else:
         print "\nInvalid Choice."
         front_of_house()
-        
-# yeah, we need credits! -- name isn't working if errors made, so screw it, restart
-def game_credits():
-    print "\n- 4213 - Python text game by Excellence_ of Broken Legion"
-    print "- Broken Legion: http://brokenlegion.org/smf"
-    print "- Idea(s) by: Excellence_, iBoredom_"
-    print "- Game written by: Excellence_"
-    print "- Code Checking: Excellence_ and iBoredom_"
-    print "- Testing done by: Excellence_ and iBoredom_"
-    print "- Game Copyright Excellence_, 2012"
-    start_menu()
-    
-# aw, they left the house. farewell, {username}!
-def leave_house():
-    print "\nYou leave the property..."
-    print "You'll never know the secrets of house 4213, {0}.".format(name)
-    
-# keep this as an error screen when the time comes
-def game_error():
-    raise SystemExit("\nGAME ERROR - Game error has occurred! Report it to Excellence_ with documentation.")
-
-# player quit mid game
-def game_quit():
-    raise SystemExit("\nGood bye, {0}.".format(name))
     
 # don't go into the storage room!
 def storage_room():
