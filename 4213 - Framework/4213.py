@@ -1,6 +1,6 @@
 # everything should be documented well enough to edit this game.
 # everything handled through defined sections (functions, in a sense)
-# questions? PM Excellence_ on the Broken Legion Forums (http://brokenlegion.org/smf)
+# questions? PM iBoredom_ on the Broken Legion Forums (http://brokenlegion.org/smf)
 # let's, eh, begin?
 # wait...Goals to Come
 #1. Special ending if player has locket
@@ -25,7 +25,7 @@ print "\nWelcome to..."
 print "--------------------------"
 print title
 print "--------------------------"
-print "The Python text game by Excellence_ of Broken Legion."
+print "The Python text game by iBoredom_ of Broken Legion."
 # end of the title screen and opening stuff
 
 # let's handle the 'start menu' here
@@ -63,13 +63,13 @@ def front_of_house():
 		
 # yeah, we need credits! -- name isn't working if errors made, so screw it, restart
 def credits():
-	print "\n- 4213 - Python text game by Excellence_ of Broken Legion"
+	print "\n- 4213 - Python text game by iBoredom_ of Broken Legion"
 	print "- Broken Legion: http://brokenlegion.org/smf"
-	print "- Idea(s) by: Excellence_, iBoredom_"
-	print "- Game written by: Excellence_"
+	print "- Idea(s) by: iBoredom_, Excellence_,"
+	print "- Game written by: iBoredom_"
 	print "- Code Checking: Excellence_ and iBoredom_"
 	print "- Testing done by: Excellence_ and iBoredom_"
-	print "- Game Copyright Excellence_, 2012"
+	print "- Game Copyright iBoredom_, 2012"
 	print "\n- Due to menu errors, please restart to play."
 		
 # uh, like, you need to make a proper choice at the title too! (no name of player here)
