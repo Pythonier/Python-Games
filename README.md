@@ -1,4 +1,4 @@
 Python-Games
 ============
 
-Python games by iBoredom_ of Broken Legion (http://brokenlegion.org/smf).  This repo is pretty much dedicated to 4213 only, nothing else.
+Basic text game written in Python - I quit after Concept One due to my messy code and lack of interest.  Newest game is: Rooms of Mystery
