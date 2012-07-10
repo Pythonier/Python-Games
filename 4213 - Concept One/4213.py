@@ -1,6 +1,6 @@
 # this is version two (2) of the Python text game '4213'
 # everything handled through defined sections (functions/classes, in a sense)
-# questions? PM Excellence_ on the Broken Legion Forums (http://brokenlegion.org/smf)
+# questions? PM iBoredom_ on the Broken Legion Forums (http://brokenlegion.org/smf)
 
 # handling the title screen stuff
 title = """
@@ -39,10 +39,10 @@ def game_credits():
     print "\n- 4213 - Python text game by Excellence_ of Broken Legion"
     print "- Broken Legion: http://brokenlegion.org/smf"
     print "- Idea(s) by: Excellence_, iBoredom_"
-    print "- Game written by: Excellence_"
+    print "- Game written by: iBoredom_"
     print "- Code Checking: Excellence_ and iBoredom_"
     print "- Testing done by: Excellence_ and iBoredom_"
-    print "- Game Copyright Excellence_, 2012"
+    print "- Game Copyright iBoredom_, 2012"
     start_menu()
     
 # aw, they left the house. farewell, {username}!
@@ -52,7 +52,7 @@ def leave_house():
     
 # keep this as an error screen when the time comes
 def game_error():
-    raise SystemExit("\nGAME ERROR - Game error has occurred! Report it to Excellence_ with documentation.")
+    raise SystemExit("\nGAME ERROR - Game error has occurred! Report it to iBoredom_ with documentation.")
 
 # player quit mid game
 def game_quit():
